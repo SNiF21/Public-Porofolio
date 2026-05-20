@@ -6,7 +6,7 @@ Un portofoliu personal minimalist, cu proiecte preluate din GitHub si o interfat
 
 Site-ul este publicat aici:
 
-- https://snif21.github.io/Public-Porofolio/
+- https://snif21.github.io/Public-Portfolio/
 
 ## Functionalitati
 
