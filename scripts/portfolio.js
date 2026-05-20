@@ -3,10 +3,14 @@ const DEFAULT_USER = "BraicuDragos";
 const container = document.getElementById("portfolio-container");
 const searchInput = document.getElementById("portfolio-search");
 const statusArea = document.getElementById("portfolio-status");
+const loadMoreButton = document.getElementById("portfolio-load-more");
+
+const PAGE_SIZE = 6;
 
 const state = {
   projects: [],
   query: "",
+  visibleCount: PAGE_SIZE,
 };
 
 const MOCK_PROJECTS = [
@@ -167,7 +171,15 @@ function applyFilters() {
   }
 
   setStatus("none", "");
-  renderProjects(filtered);
+  renderProjects(filtered.slice(0, state.visibleCount));
+
+  if (loadMoreButton) {
+    if (filtered.length > state.visibleCount) {
+      loadMoreButton.classList.remove("hidden");
+    } else {
+      loadMoreButton.classList.add("hidden");
+    }
+  }
 }
 
 async function loadProjects() {
@@ -198,9 +210,11 @@ async function loadProjects() {
     }
 
     state.projects = projects.concat(MOCK_PROJECTS);
+    state.visibleCount = PAGE_SIZE;
     applyFilters();
   } catch (error) {
     state.projects = MOCK_PROJECTS.slice();
+    state.visibleCount = PAGE_SIZE;
     setStatus("error", "Ups! Nu am putut incarca proiectele momentan. :O");
     applyFilters();
   }
@@ -209,6 +223,15 @@ async function loadProjects() {
 if (searchInput) {
   searchInput.addEventListener("input", (event) => {
     state.query = event.target.value.trim();
+    state.visibleCount = PAGE_SIZE;
+    applyFilters();
+  });
+}
+
+if (loadMoreButton) {
+  loadMoreButton.addEventListener("click", () => {
+    const filtered = getFilteredProjects();
+    state.visibleCount = filtered.length;
     applyFilters();
   });
 }
