@@ -9,6 +9,54 @@ const state = {
   query: "",
 };
 
+const MOCK_PROJECTS = [
+  {
+    name: "Campus Planner",
+    description: "Mini app pentru organizarea sesiunilor si deadline-urilor.",
+    language: "JavaScript",
+    stargazers_count: 8,
+    html_url: "#",
+    updated_at: "2026-04-18T10:30:00Z",
+    fork: false
+  },
+  {
+    name: "Focus Timer",
+    description: "Pomodoro timer simplu cu statistici locale.",
+    language: "HTML",
+    stargazers_count: 3,
+    html_url: "#",
+    updated_at: "2026-03-05T14:12:00Z",
+    fork: false
+  },
+  {
+    name: "Budget Buddy",
+    description: "Tracker de cheltuieli pentru studenti.",
+    language: "CSS",
+    stargazers_count: 5,
+    html_url: "#",
+    updated_at: "2026-02-21T09:00:00Z",
+    fork: false
+  },
+  {
+    name: "Study Notes",
+    description: "Organizator rapid pentru notite si resurse.",
+    language: "JavaScript",
+    stargazers_count: 12,
+    html_url: "#",
+    updated_at: "2026-05-02T08:45:00Z",
+    fork: false
+  },
+  {
+    name: "Dorm Essentials",
+    description: "Lista smart pentru cumparaturi si checklists.",
+    language: "TypeScript",
+    stargazers_count: 2,
+    html_url: "#",
+    updated_at: "2026-01-12T16:20:00Z",
+    fork: false
+  }
+];
+
 function createCard(project) {
   const card = document.createElement("article");
   card.className = "rounded-lg border border-stone-200 bg-white p-4";
@@ -149,13 +197,12 @@ async function loadProjects() {
       return;
     }
 
-    state.projects = projects;
+    state.projects = projects.concat(MOCK_PROJECTS);
     applyFilters();
   } catch (error) {
-    setStatus(
-      "error",
-      "Ups! Nu am putut incarca proiectele momentan. :O"
-    );
+    state.projects = MOCK_PROJECTS.slice();
+    setStatus("error", "Ups! Nu am putut incarca proiectele momentan. :O");
+    applyFilters();
   }
 }
 
