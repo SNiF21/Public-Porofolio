@@ -6,158 +6,87 @@
     <title>Personal Portfolio</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Work+Sans:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap"
     />
     <link rel="stylesheet" href="dist/output.css" />
     <script src="scripts/portfolio.js" defer></script>
   </head>
-  <body class="min-h-screen bg-gradient-to-br from-amber-50 via-stone-50 to-orange-50 text-stone-900 antialiased">
-    <div class="relative overflow-hidden">
-      <div class="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-orange-200/60 blur-3xl"></div>
-      <div class="pointer-events-none absolute bottom-0 right-0 h-64 w-64 translate-x-1/3 translate-y-1/3 rounded-full bg-amber-200/60 blur-3xl"></div>
+  <body class="min-h-screen bg-stone-50 text-stone-900 font-sans antialiased">
+    <div class="mx-auto max-w-3xl space-y-12 px-6 py-12">
+      <header class="space-y-3">
+        <p class="text-xs font-semibold uppercase tracking-[0.3em] text-stone-500">
+          Portfolio
+        </p>
+        <h1 class="text-3xl font-semibold">Andrei Colac</h1>
+        <p class="text-sm text-stone-600">
+          Engineering Intern at AUMOVIO. Computer Science student at Lucian Blaga University of Sibiu.
+        </p>
+      </header>
 
-      <div class="mx-auto max-w-6xl px-6 py-12 md:px-10 md:py-16 lg:py-20">
-        <header class="mb-12 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">
-              Portfolio
+      <section id="about" class="space-y-3">
+        <h2 class="text-xl font-semibold">About</h2>
+        <p class="text-sm text-stone-700">
+          Engineering intern focused on building reliable software and gaining hands-on experience in embedded and modern C# development.
+        </p>
+        <div class="flex flex-wrap gap-2 text-xs text-stone-600">
+          <span class="rounded-full bg-white px-3 py-1 ring-1 ring-stone-200">C#</span>
+          <span class="rounded-full bg-white px-3 py-1 ring-1 ring-stone-200">.NET Framework</span>
+          <span class="rounded-full bg-white px-3 py-1 ring-1 ring-stone-200">C++</span>
+          <span class="rounded-full bg-white px-3 py-1 ring-1 ring-stone-200">Embedded Systems</span>
+        </div>
+      </section>
+
+      <section id="work-experience" class="space-y-3">
+        <h2 class="text-xl font-semibold">Work Experience</h2>
+        <div class="space-y-3">
+          <article class="rounded-lg border border-stone-200 bg-white p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium">Junior Engineering Intern</h3>
+              <span class="text-xs text-stone-500">Mar 2026 - Present</span>
+            </div>
+            <p class="mt-2 text-sm text-stone-600">AUMOVIO · Full-time · Sibiu, Romania (on-site).</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="education" class="space-y-3">
+        <h2 class="text-xl font-semibold">Education</h2>
+        <div class="space-y-3">
+          <article class="rounded-lg border border-stone-200 bg-white p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium">Lucian Blaga University of Sibiu</h3>
+              <span class="text-xs text-stone-500">2024 - 2028</span>
+            </div>
+            <p class="mt-2 text-sm text-stone-600">
+              Bachelor's degree, Computer Science. Activities: Asociatia BiT.
             </p>
-            <h1 class="mt-2 text-3xl font-semibold text-stone-900 md:text-4xl lg:text-5xl" style="font-family: 'Playfair Display', serif;">
-              Andrei Colac
-            </h1>
-          </div>
-          <div class="rounded-2xl border border-amber-200 bg-white/80 px-5 py-3 shadow-sm">
-            <p class="text-sm font-medium text-stone-700" style="font-family: 'Work Sans', sans-serif;">
-              Engineering Intern at AUMOVIO. Computer Science student at Lucian Blaga University of Sibiu.
+          </article>
+
+          <article class="rounded-lg border border-stone-200 bg-white p-4">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium">Eat Sleep Code Repeat 2025</h3>
+              <span class="text-xs text-stone-500">Nov 2025 - Jun 2026</span>
+            </div>
+            <p class="mt-2 text-sm text-stone-600">
+              NXP Semiconductors. Embedded software programming and systems work.
             </p>
-          </div>
-        </header>
+          </article>
+        </div>
+      </section>
 
-        <main class="space-y-16">
-          <section id="profile" aria-labelledby="profile-title" class="rounded-3xl bg-white/70 p-8 shadow-lg ring-1 ring-amber-100 backdrop-blur md:p-10">
-            <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-              <div class="space-y-6">
-                <div>
-                  <h2 id="profile-title" class="text-2xl font-semibold text-stone-900 md:text-3xl" style="font-family: 'Playfair Display', serif;">
-                    Profile
-                  </h2>
-                  <p class="mt-3 text-base text-stone-700" style="font-family: 'Work Sans', sans-serif;">
-                    Engineering intern focused on building reliable software and gaining hands-on experience in embedded and modern C# development.
-                  </p>
-                </div>
+      <section id="portfolio" class="space-y-3">
+        <h2 class="text-xl font-semibold">Projects</h2>
+        <div
+          id="portfolio-container"
+          data-github-user="SNiF21"
+          class="grid gap-4 sm:grid-cols-2"
+        ></div>
+      </section>
 
-                <div class="rounded-2xl border border-amber-200 bg-amber-50/80 px-5 py-4">
-                  <p class="text-sm font-semibold uppercase tracking-wide text-amber-700">Role</p>
-                  <p class="mt-2 text-lg font-medium text-stone-900" style="font-family: 'Work Sans', sans-serif;">
-                    Engineering Intern and Computer Science Student
-                  </p>
-                </div>
-
-                <div>
-                  <p class="text-sm font-semibold uppercase tracking-wide text-amber-700">Preferred technologies</p>
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    <span class="rounded-full bg-white px-3 py-1 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-amber-200">C#</span>
-                    <span class="rounded-full bg-white px-3 py-1 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-amber-200">.NET Framework</span>
-                    <span class="rounded-full bg-white px-3 py-1 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-amber-200">C++</span>
-                    <span class="rounded-full bg-white px-3 py-1 text-sm font-medium text-stone-700 shadow-sm ring-1 ring-amber-200">Embedded Systems</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="flex justify-center lg:justify-end">
-                <div class="aspect-square w-full max-w-xs overflow-hidden rounded-[2.5rem] border border-amber-200 shadow-2xl">
-                  <img
-                    src="assets/1765201819915.png"
-                    alt="Andrei Colac"
-                    class="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="work-experience" aria-labelledby="work-title" class="space-y-6">
-            <div class="flex items-center justify-between">
-              <h2 id="work-title" class="text-2xl font-semibold text-stone-900 md:text-3xl" style="font-family: 'Playfair Display', serif;">
-                Work Experience
-              </h2>
-              <span class="hidden text-sm font-medium text-stone-500 md:inline" style="font-family: 'Work Sans', sans-serif;">Selected roles</span>
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-2">
-              <article class="group rounded-2xl border border-amber-200/70 bg-white/90 p-6 shadow-xl ring-1 ring-amber-100 transition hover:-translate-y-1 hover:shadow-2xl">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 class="text-xl font-semibold text-stone-900" style="font-family: 'Work Sans', sans-serif;">Junior Engineering Intern</h3>
-                    <p class="mt-1 text-sm font-medium text-amber-700">AUMOVIO · Full-time</p>
-                  </div>
-                  <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700">Mar 2026 - Present</span>
-                </div>
-                <p class="mt-4 text-sm text-stone-600" style="font-family: 'Work Sans', sans-serif;">
-                  Supporting engineering initiatives with a focus on C# and .NET, based in Sibiu, Romania (on-site).
-                </p>
-              </article>
-            </div>
-          </section>
-
-          <section id="education" aria-labelledby="education-title" class="space-y-6">
-            <div class="flex items-center justify-between">
-              <h2 id="education-title" class="text-2xl font-semibold text-stone-900 md:text-3xl" style="font-family: 'Playfair Display', serif;">
-                Education
-              </h2>
-              <span class="hidden text-sm font-medium text-stone-500 md:inline" style="font-family: 'Work Sans', sans-serif;">Academic background</span>
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-2">
-              <article class="rounded-2xl border border-orange-200/70 bg-white/90 p-6 shadow-xl ring-1 ring-orange-100">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 class="text-xl font-semibold text-stone-900" style="font-family: 'Work Sans', sans-serif;">Lucian Blaga University of Sibiu</h3>
-                    <p class="mt-1 text-sm font-medium text-orange-700">Bachelor's degree, Computer Science</p>
-                  </div>
-                  <span class="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-700">2024 - 2028</span>
-                </div>
-                <p class="mt-4 text-sm text-stone-600" style="font-family: 'Work Sans', sans-serif;">
-                  Activities and societies: Asociatia BiT. Focused on C++ and C# foundations.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-orange-200/70 bg-white/90 p-6 shadow-xl ring-1 ring-orange-100">
-                <div class="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 class="text-xl font-semibold text-stone-900" style="font-family: 'Work Sans', sans-serif;">Eat Sleep Code Repeat 2025</h3>
-                    <p class="mt-1 text-sm font-medium text-orange-700">NXP Semiconductors</p>
-                  </div>
-                  <span class="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-700">Nov 2025 - Jun 2026</span>
-                </div>
-                <p class="mt-4 text-sm text-stone-600" style="font-family: 'Work Sans', sans-serif;">
-                  Bridged academic learning with industry practice through embedded software programming and systems work.
-                </p>
-              </article>
-            </div>
-          </section>
-
-          <section id="portfolio" aria-labelledby="portfolio-title" class="space-y-6">
-            <div class="flex items-center justify-between">
-              <h2 id="portfolio-title" class="text-2xl font-semibold text-stone-900 md:text-3xl" style="font-family: 'Playfair Display', serif;">
-                Portfolio
-              </h2>
-              <span class="hidden text-sm font-medium text-stone-500 md:inline" style="font-family: 'Work Sans', sans-serif;">Projects coming soon</span>
-            </div>
-
-            <div
-              id="portfolio-container"
-              data-github-user="SNiF21"
-              class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-            ></div>
-          </section>
-        </main>
-
-        <footer class="mt-16 border-t border-amber-200/60 pt-6 text-sm text-stone-600" style="font-family: 'Work Sans', sans-serif;">
-          Crafted with care. Add your email and links when ready.
-        </footer>
-      </div>
+      <footer class="text-xs text-stone-500">
+        andreicatalin.colac@ulbsibiu.ro
+        <a href="https://github.com/SNiF21" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-700"><br>GitHub</a>
+      </footer>
     </div>
   </body>
 </html>
