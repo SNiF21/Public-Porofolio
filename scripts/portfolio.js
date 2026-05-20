@@ -61,6 +61,13 @@ const MOCK_PROJECTS = [
   }
 ];
 
+const STATUS_STYLES = {
+  loading: "flex items-center gap-2 text-sm text-stone-500",
+  error: "text-sm text-stone-600",
+  empty: "text-sm text-stone-500",
+  none: "text-sm text-stone-500",
+};
+
 function createCard(project) {
   const card = document.createElement("article");
   card.className = "rounded-lg border border-stone-200 bg-white p-4";
@@ -108,11 +115,10 @@ function setStatus(type, message) {
     return;
   }
 
-  statusArea.className = "text-sm text-stone-500";
+  statusArea.className = STATUS_STYLES[type] || STATUS_STYLES.none;
   statusArea.innerHTML = "";
 
   if (type === "loading") {
-    statusArea.className = "flex items-center gap-2 text-sm text-stone-500";
     statusArea.innerHTML =
       "<span class=\"portfolio-spinner\"></span>Loading projects...";
     return;
@@ -120,10 +126,6 @@ function setStatus(type, message) {
 
   if (!message) {
     return;
-  }
-
-  if (type === "error") {
-    statusArea.className = "text-sm text-stone-600";
   }
 
   statusArea.textContent = message;
@@ -174,11 +176,10 @@ function applyFilters() {
   renderProjects(filtered.slice(0, state.visibleCount));
 
   if (loadMoreButton) {
-    if (filtered.length > state.visibleCount) {
-      loadMoreButton.classList.remove("hidden");
-    } else {
-      loadMoreButton.classList.add("hidden");
-    }
+    loadMoreButton.classList.toggle(
+      "hidden",
+      filtered.length <= state.visibleCount
+    );
   }
 }
 
@@ -189,6 +190,7 @@ async function loadProjects() {
 
   const username = container.dataset.githubUser || DEFAULT_USER;
   const apiUrl = `https://api.github.com/users/${username}/repos`;
+  let projects = [];
 
   setStatus("loading");
   container.innerHTML = "";
@@ -196,28 +198,25 @@ async function loadProjects() {
   try {
     const response = await fetch(apiUrl);
     if (!response.ok) {
-      setStatus(
-        "error",
-        "Ups! Nu am putut incarca proiectele momentan. :)"
-      );
+      setStatus("error", "Ups! Nu am putut incarca proiectele momentan. :)");
       return;
     }
 
-    const projects = await response.json();
-    if (!Array.isArray(projects) || projects.length === 0) {
+    const data = await response.json();
+    if (!Array.isArray(data) || data.length === 0) {
       setStatus("empty", "No projects available at the moment.");
       return;
     }
 
-    state.projects = projects.concat(MOCK_PROJECTS);
-    state.visibleCount = PAGE_SIZE;
-    applyFilters();
+    projects = data.concat(MOCK_PROJECTS);
   } catch (error) {
-    state.projects = MOCK_PROJECTS.slice();
-    state.visibleCount = PAGE_SIZE;
     setStatus("error", "Ups! Nu am putut incarca proiectele momentan. :O");
-    applyFilters();
+    projects = MOCK_PROJECTS.slice();
   }
+
+  state.projects = projects;
+  state.visibleCount = PAGE_SIZE;
+  applyFilters();
 }
 
 if (searchInput) {
